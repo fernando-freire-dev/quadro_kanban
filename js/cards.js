@@ -66,20 +66,10 @@ function montarCard(titulo, descricao, responsavel, prioridade) {
 
         </div>
 
-        <div class="card-actions">
+        <div class="card-delete" title="Excluir tarefa">
 
-            <button class="btn-edit">
-
-                ✏️
-
-            </button>
-
-            <button class="btn-delete">
-
-                🗑️
-
-            </button>
-
+            ✕
+        
         </div>
 
     `;
