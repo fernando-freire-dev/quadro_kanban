@@ -102,6 +102,18 @@ function configurarEventos(card){
 
         });
 
+    card.addEventListener("dblclick",()=>{
+
+        editarCard(card);
+    
+    });
+
+}
+
+function editarCard(card){
+
+    alert("Editar cartão");
+
 }
 
 function limparFormulario(){
