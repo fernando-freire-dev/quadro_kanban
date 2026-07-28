@@ -118,14 +118,16 @@ function textoPrioridade(prioridade){
     switch(prioridade){
 
         case "alta":
-            return "🔴 Alta";
+            return "ALTA";
 
         case "media":
-            return "🟡 Média";
+            return "MÉDIA";
 
         default:
-            return "🟢 Baixa";
+            return "BAIXA";
 
     }
+
+}
 
 }
