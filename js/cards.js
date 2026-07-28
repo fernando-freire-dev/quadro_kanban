@@ -1,21 +1,40 @@
 const btnSalvar = document.getElementById("btnSalvar");
 
-btnSalvar.addEventListener("click", criarCard);
+btnSalvar.addEventListener("click", salvarCard);
 
-function criarCard() {
+function salvarCard() {
 
     const titulo = document.getElementById("titulo").value.trim();
     const descricao = document.getElementById("descricao").value.trim();
     const responsavel = document.getElementById("responsavel").value.trim();
     const prioridade = document.getElementById("prioridade").value;
 
-    if (titulo === "") {
+    if (!titulo) {
 
-        alert("Informe um título.");
+        alert("Informe o título da tarefa.");
 
         return;
 
     }
+
+    const card = montarCard(
+        titulo,
+        descricao,
+        responsavel,
+        prioridade
+    );
+
+    document
+        .getElementById("afazer")
+        .appendChild(card);
+
+    limparFormulario();
+
+    fecharModal();
+
+}
+
+function montarCard(titulo, descricao, responsavel, prioridade) {
 
     const card = document.createElement("div");
 
@@ -34,11 +53,15 @@ function criarCard() {
         <div class="card-footer">
 
             <div class="card-user">
-                👤 ${responsavel || "Não informado"}
+
+                👤 ${responsavel || "-"}
+
             </div>
 
             <div class="priority ${prioridade}">
+
                 ${textoPrioridade(prioridade)}
+
             </div>
 
         </div>
@@ -46,30 +69,63 @@ function criarCard() {
         <div class="card-actions">
 
             <button class="btn-edit">
+
                 ✏️
+
             </button>
 
             <button class="btn-delete">
+
                 🗑️
+
             </button>
 
         </div>
 
     `;
 
-    document
-        .getElementById("afazer")
-        .appendChild(card);
+    configurarEventos(card);
 
-    limparFormulario();
-
-    fecharModal();
+    return card;
 
 }
 
-function textoPrioridade(p) {
+function configurarEventos(card){
 
-    switch (p) {
+    card
+        .querySelector(".btn-delete")
+        .addEventListener("click", ()=>{
+
+            if(confirm("Excluir esta tarefa?")){
+
+                card.remove();
+
+            }
+
+        });
+
+    card
+        .querySelector(".btn-edit")
+        .addEventListener("click", ()=>{
+
+            alert("Editar virá na próxima etapa.");
+
+        });
+
+}
+
+function limparFormulario(){
+
+    titulo.value="";
+    descricao.value="";
+    responsavel.value="";
+    prioridade.value="baixa";
+
+}
+
+function textoPrioridade(prioridade){
+
+    switch(prioridade){
 
         case "alta":
             return "🔴 Alta";
@@ -81,14 +137,5 @@ function textoPrioridade(p) {
             return "🟢 Baixa";
 
     }
-
-}
-
-function limparFormulario() {
-
-    document.getElementById("titulo").value = "";
-    document.getElementById("descricao").value = "";
-    document.getElementById("responsavel").value = "";
-    document.getElementById("prioridade").value = "baixa";
 
 }
