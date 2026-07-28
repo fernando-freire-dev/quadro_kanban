@@ -474,6 +474,22 @@ MODAL
 
 }
 
+.column{
+
+    transition:.2s;
+
+}
+
+.column.drag-over{
+
+    background:#eaf3ff;
+
+    outline:3px dashed #2563eb;
+
+    transform:scale(1.01);
+
+}
+
 /* ==========================================================
 RESPONSIVO
 ========================================================== */
