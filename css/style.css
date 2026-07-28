@@ -1,0 +1,453 @@
+/* ==========================================================
+   KANBAN LITE
+   Fênix Digital
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+
+    --success:#16a34a;
+    --warning:#f59e0b;
+    --danger:#dc2626;
+
+    --bg:#eef2f7;
+    --column:#f8fafc;
+
+    --text:#1f2937;
+    --border:#d1d5db;
+
+    --shadow:0 6px 20px rgba(0,0,0,.08);
+
+    --radius:16px;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#eef3fb,#f8fafc);
+    color:var(--text);
+
+    min-height:100vh;
+
+}
+
+/* ==========================================================
+HEADER
+========================================================== */
+
+.topbar{
+
+    background:white;
+
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.logo{
+
+    font-size:22px;
+    font-weight:700;
+    color:var(--primary);
+
+}
+
+.logo span{
+
+    margin-left:8px;
+
+}
+
+.topbar h1{
+
+    font-size:24px;
+    font-weight:600;
+
+}
+
+/* ==========================================================
+PROJETO
+========================================================== */
+
+.project-area{
+
+    width:95%;
+    margin:30px auto;
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:25px;
+
+}
+
+.project-input{
+
+    flex:1;
+
+}
+
+.project-input label{
+
+    display:block;
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.project-input input{
+
+    width:100%;
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    transition:.2s;
+
+}
+
+.project-input input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================================================
+BOTÕES
+========================================================== */
+
+.buttons{
+
+    display:flex;
+    gap:15px;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:14px 22px;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+#btnNovaTarefa{
+
+    background:var(--primary);
+    color:white;
+
+}
+
+#btnNovaTarefa:hover{
+
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+
+}
+
+#btnExportar{
+
+    background:var(--success);
+    color:white;
+
+}
+
+#btnExportar:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(.95);
+
+}
+
+/* ==========================================================
+BOARD
+========================================================== */
+
+.board{
+
+    width:95%;
+    margin:25px auto 40px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.column{
+
+    background:var(--column);
+
+    border-radius:18px;
+
+    min-height:580px;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.column-header{
+
+    padding:18px;
+
+    color:white;
+
+    font-size:18px;
+    font-weight:700;
+
+    border-radius:18px 18px 0 0;
+
+}
+
+.ideas{
+
+    background:#3b82f6;
+
+}
+
+.todo{
+
+    background:#f59e0b;
+
+}
+
+.doing{
+
+    background:#8b5cf6;
+
+}
+
+.done{
+
+    background:#16a34a;
+
+}
+
+.cards{
+
+    flex:1;
+
+    padding:15px;
+
+}
+
+/* ==========================================================
+MODAL
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:480px;
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    padding:30px;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:25px;
+
+    color:var(--primary);
+
+}
+
+.field{
+
+    margin-bottom:18px;
+
+}
+
+.field label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.field input,
+.field textarea,
+.field select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    resize:none;
+
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+#btnCancelar{
+
+    background:#e5e7eb;
+
+}
+
+#btnSalvar{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+#btnSalvar:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* ==========================================================
+RESPONSIVO
+========================================================== */
+
+@media(max-width:1100px){
+
+    .board{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .topbar{
+
+        flex-direction:column;
+        justify-content:center;
+
+        gap:5px;
+
+        height:100px;
+
+    }
+
+    .project-area{
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+    .buttons{
+
+        flex-direction:column;
+
+    }
+
+    .board{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
