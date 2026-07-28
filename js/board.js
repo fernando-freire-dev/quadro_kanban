@@ -1,18 +1,44 @@
-const listas = document.querySelectorAll(".cards");
+document.querySelectorAll(".cards").forEach(lista=>{
 
-listas.forEach(lista => {
+    new Sortable(lista,{
 
-    new Sortable(lista, {
+        group:"kanban",
 
-        group: "kanban",
-
-        animation:200,
+        animation:180,
 
         ghostClass:"sortable-ghost",
 
         chosenClass:"sortable-chosen",
 
-        dragClass:"sortable-drag"
+        dragClass:"sortable-drag",
+
+        onStart(evt){
+
+            evt.to.parentElement.classList.add("drag-over");
+
+        },
+
+        onEnd(){
+
+            document.querySelectorAll(".column").forEach(col=>{
+
+                col.classList.remove("drag-over");
+
+            });
+
+        },
+
+        onMove(evt){
+
+            document.querySelectorAll(".column").forEach(col=>{
+
+                col.classList.remove("drag-over");
+
+            });
+
+            evt.to.parentElement.classList.add("drag-over");
+
+        }
 
     });
 
