@@ -320,6 +320,35 @@ BOARD
 
 }
 
+.empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:12px;
+
+    color:#b4bcc7;
+
+    font-size:50px;
+
+    padding:50px 10px;
+
+    text-align:center;
+
+}
+
+.empty p{
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
 /* ==========================================================
 MODAL
 ========================================================== */
