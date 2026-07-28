@@ -25,7 +25,7 @@ function salvarCard() {
     );
 
     document
-        .getElementById("afazer")
+        .getElementById("ideias")
         .appendChild(card);
 
     limparFormulario();
