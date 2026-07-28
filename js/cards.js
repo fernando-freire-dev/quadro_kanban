@@ -12,7 +12,6 @@ function salvarCard() {
     if (!titulo) {
 
         alert("Informe o título da tarefa.");
-
         return;
 
     }
@@ -24,9 +23,32 @@ function salvarCard() {
         prioridade
     );
 
-    document
-        .getElementById("ideias")
-        .appendChild(card);
+    // Coluna onde a tarefa será criada
+    const coluna = document.getElementById("afazer");
+
+    // Remove o placeholder, se existir
+    coluna.querySelector(".empty")?.remove();
+
+    // Adiciona o cartão
+    coluna.appendChild(card);
+
+    // Animação de entrada
+    card.animate(
+        [
+            {
+                opacity: 0,
+                transform: "translateY(-15px)"
+            },
+            {
+                opacity: 1,
+                transform: "translateY(0)"
+            }
+        ],
+        {
+            duration: 250,
+            easing: "ease-out"
+        }
+    );
 
     limparFormulario();
 
