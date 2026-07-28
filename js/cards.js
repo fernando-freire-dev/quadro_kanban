@@ -104,9 +104,12 @@ function montarCard(titulo, descricao, responsavel, prioridade) {
 
 function configurarEventos(card){
 
+    // Excluir
     card
-        .querySelector(".btn-delete")
-        .addEventListener("click", ()=>{
+        .querySelector(".card-delete")
+        .addEventListener("click",(e)=>{
+
+            e.stopPropagation();
 
             if(confirm("Excluir esta tarefa?")){
 
@@ -116,18 +119,11 @@ function configurarEventos(card){
 
         });
 
-    card
-        .querySelector(".btn-edit")
-        .addEventListener("click", ()=>{
-
-            alert("Editar virá na próxima etapa.");
-
-        });
-
+    // Editar
     card.addEventListener("dblclick",()=>{
 
         editarCard(card);
-    
+
     });
 
 }
@@ -140,10 +136,10 @@ function editarCard(card){
 
 function limparFormulario(){
 
-    titulo.value="";
-    descricao.value="";
-    responsavel.value="";
-    prioridade.value="baixa";
+    document.getElementById("titulo").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("responsavel").value = "";
+    document.getElementById("prioridade").value = "baixa";
 
 }
 
@@ -161,7 +157,5 @@ function textoPrioridade(prioridade){
             return "BAIXA";
 
     }
-
-}
 
 }
