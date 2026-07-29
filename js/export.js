@@ -43,7 +43,7 @@ function desenharCabecalho(pdf){
     pdf.text(
         "KANBAN - PROJETO MULTIDISCIPLINAR",
         largura/2,
-        14,
+        10,
         {align:"center"}
     );
 
@@ -171,33 +171,86 @@ function desenharCards(pdf, x, topo, larguraColuna, idColuna) {
 
     cards.forEach(card => {
 
-        pdf.setFillColor(248,249,250);
-        pdf.setDrawColor(220);
+        // Fundo do cartão
+        pdf.setFillColor(250,250,250);
+        pdf.setDrawColor(215);
 
         pdf.roundedRect(
             x + 4,
             y,
             larguraColuna - 8,
-            22,
+            30,
             2,
             2,
             "FD"
         );
 
-        const titulo = card
-            .querySelector(".card-title")
-            .innerText;
+        const titulo =
+            card.querySelector(".card-title").innerText;
 
-        pdf.setFontSize(10);
+        const descricao =
+            card.querySelector(".card-description").innerText;
+
+        const usuario =
+            card.querySelector(".card-user").innerText;
+
+        const prioridade =
+            card.querySelector(".priority").innerText;
+
+        // Título
         pdf.setFont("helvetica","bold");
+        pdf.setFontSize(10);
 
         pdf.text(
             titulo,
             x + 7,
-            y + 7
+            y + 6
         );
 
-        y += 26;
+        // Descrição
+        pdf.setFont("helvetica","normal");
+        pdf.setFontSize(8);
+
+        const linhas =
+            pdf.splitTextToSize(
+                descricao,
+                larguraColuna - 14
+            );
+
+        pdf.text(
+            linhas,
+            x + 7,
+            y + 12
+        );
+
+        // Linha separadora
+        pdf.setDrawColor(230);
+
+        pdf.line(
+            x + 6,
+            y + 22,
+            x + larguraColuna - 6,
+            y + 22
+        );
+
+        // Responsável
+        pdf.setFontSize(7);
+
+        pdf.text(
+            usuario,
+            x + 7,
+            y + 27
+        );
+
+        // Prioridade
+        pdf.text(
+            prioridade,
+            x + larguraColuna - 10,
+            y + 27,
+            {align:"right"}
+        );
+
+        y += 34;
 
     });
 
