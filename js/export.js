@@ -191,12 +191,48 @@ function desenharCards(pdf, x, topo, larguraColuna, idColuna) {
         const descricao =
             card.querySelector(".card-description").innerText;
 
-        const usuario =
-            card.querySelector(".card-user").innerText;
-            usuario = usuario.replace(/[^\x00-\x7F]/g, "").trim();
+        const usuario = card
+            .querySelector(".card-user")
+            .innerText
+            .replace(/[^\x00-\x7F]/g, "")
+            .trim();
 
-        const prioridade =
-            card.querySelector(".priority").innerText;
+        const prioridadeEl = card.querySelector(".priority");
+
+        const prioridade = prioridadeEl.innerText;
+        
+        let corPrioridade = [34,197,94]; // verde
+        
+        if (prioridadeEl.classList.contains("media")) {
+            corPrioridade = [245,158,11];
+        }
+        
+        if (prioridadeEl.classList.contains("alta")) {
+            corPrioridade = [239,68,68];
+        }
+        pdf.setFillColor(...corPrioridade);
+
+        pdf.roundedRect(
+            x + larguraColuna - 24,
+            y + 23,
+            16,
+            5,
+            2,
+            2,
+            "F"
+        );
+        
+        pdf.setTextColor(255);
+        pdf.setFontSize(6);
+        
+        pdf.text(
+            prioridade,
+            x + larguraColuna - 16,
+            y + 26.5,
+            { align: "center" }
+        );
+        
+        pdf.setTextColor(0);
 
         // Título
         pdf.setFont("helvetica","bold");
