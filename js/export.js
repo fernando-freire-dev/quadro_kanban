@@ -33,7 +33,7 @@ function desenharCabecalho(pdf){
 
     // Fundo do cabeçalho
     pdf.setFillColor(37,99,235);
-    pdf.rect(0,0,largura,22,"F");
+    pdf.rect(0,0,largura,18,"F");
 
     // Título
     pdf.setTextColor(255,255,255);
