@@ -280,12 +280,7 @@ function desenharCards(pdf, x, topo, larguraColuna, idColuna) {
         );
 
         // Prioridade
-        pdf.text(
-            prioridade,
-            x + larguraColuna - 10,
-            y + 27,
-            {align:"right"}
-        );
+        
 
         y += 34;
 
