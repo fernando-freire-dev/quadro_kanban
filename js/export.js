@@ -193,6 +193,7 @@ function desenharCards(pdf, x, topo, larguraColuna, idColuna) {
 
         const usuario =
             card.querySelector(".card-user").innerText;
+            usuario = usuario.replace(/[^\x00-\x7F]/g, "").trim();
 
         const prioridade =
             card.querySelector(".priority").innerText;
