@@ -34,7 +34,7 @@ function desenharCabecalho(pdf){
     pdf.setFontSize(20);
 
     pdf.text(
-        "KANBAN LITE",
+        "KANBAN - PROJETO MULTIDISCIPLINAR",
         largura/2,
         14,
         {align:"center"}
@@ -88,22 +88,22 @@ function desenharQuadro(pdf) {
     const colunas = [
 
         {
-            titulo: "💡 Ideias",
+            titulo: "Ideias",
             cor: [59,130,246]
         },
         {
-            titulo: "📋 A Fazer",
+            titulo: "A Fazer",
             cor: [245,158,11]
         },
         {
-            titulo: "⚙ Em andamento",
+            titulo: "Em andamento",
             cor: [147,51,234]
         },
         {
-            titulo: "✅ Concluído",
+            titulo: "Concluído",
             cor: [34,197,94]
         }
-
+    
     ];
 
     colunas.forEach((coluna, indice)=>{
