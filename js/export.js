@@ -33,7 +33,7 @@ function desenharCabecalho(pdf){
 
     // Fundo do cabeçalho
     pdf.setFillColor(37,99,235);
-    pdf.rect(0,0,largura,18,"F");
+    pdf.rect(0,0,largura,16,"F");
 
     // Título
     pdf.setTextColor(255,255,255);
@@ -58,12 +58,12 @@ function desenharCabecalho(pdf){
 
     const data = new Date().toLocaleDateString("pt-BR");
 
-    pdf.text(`Projeto: ${projeto}`,15,32);
+    pdf.text(`Projeto: ${projeto}`,15,27);
 
     pdf.text(
         `Data: ${data}`,
         largura-15,
-        32,
+        27,
         {align:"right"}
     );
 
@@ -74,7 +74,7 @@ function desenharCabecalho(pdf){
         15,
         36,
         largura-15,
-        36
+        29
     );
 
 }
@@ -84,7 +84,7 @@ function desenharQuadro(pdf) {
     const largura = pdf.internal.pageSize.getWidth();
 
     const margem = 15;
-    const topo = 45;
+    const topo = 35;
 
     const larguraQuadro = largura - (margem * 2);
 
